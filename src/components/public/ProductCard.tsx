@@ -1,6 +1,5 @@
-import { Star, MessageCircle } from "lucide-react";
+import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useAppContext } from "@/contexts/AppContext";
 
 interface ProductCardProps {
   name: string;
@@ -9,13 +8,9 @@ interface ProductCardProps {
   category: string;
   rating: number;
   isNew?: boolean;
-  id?: string;
 }
 
-const ProductCard = ({ name, price, image, category, rating, isNew, id }: ProductCardProps) => {
-  const { settings } = useAppContext();
-  const whatsappMsg = encodeURIComponent(`مرحباً، أود الاستفسار عن: ${name} - ${price}`);
-
+const ProductCard = ({ name, price, image, category, rating, isNew }: ProductCardProps) => {
   return (
     <div className="glass-card overflow-hidden group hover:glow-border transition-all duration-500">
       {/* Image */}
@@ -54,16 +49,9 @@ const ProductCard = ({ name, price, image, category, rating, isNew, id }: Produc
 
         <div className="flex items-center justify-between">
           <p className="text-xl font-black gradient-text">{price}</p>
-          <a
-            href={`https://wa.me/${settings.whatsappNumber}?text=${whatsappMsg}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button variant="hero" size="sm">
-              <MessageCircle className="w-4 h-4" />
-              اطلب الآن
-            </Button>
-          </a>
+          <Button variant="hero" size="sm">
+            اطلب الآن
+          </Button>
         </div>
       </div>
     </div>

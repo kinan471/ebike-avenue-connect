@@ -2,20 +2,17 @@ import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { Menu, X, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useAppContext } from "@/contexts/AppContext";
 
 const navLinks = [
   { label: "الرئيسية", href: "/" },
   { label: "المنتجات", href: "/products" },
   { label: "صيانة البطاريات", href: "/maintenance" },
-  { label: "من نحن", href: "/about" },
   { label: "تواصل معنا", href: "/contact" },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  const { settings } = useAppContext();
 
   return (
     <nav className="fixed top-0 right-0 left-0 z-50 glass border-b border-glass-border/20">
@@ -27,8 +24,8 @@ const Navbar = () => {
               <Zap className="w-6 h-6 text-primary-foreground" />
             </div>
             <div className="flex flex-col">
-              <span className="text-lg font-bold gradient-text leading-tight">{settings.siteName}</span>
-              <span className="text-[10px] text-muted-foreground leading-tight">{settings.siteTagline}</span>
+              <span className="text-lg font-bold gradient-text leading-tight">Spark Swarder</span>
+              <span className="text-[10px] text-muted-foreground leading-tight">التنقل الكهربائي</span>
             </div>
           </Link>
 
@@ -51,12 +48,10 @@ const Navbar = () => {
 
           {/* CTA */}
           <div className="hidden md:block">
-            <a href={`https://wa.me/${settings.whatsappNumber}`} target="_blank" rel="noopener noreferrer">
-              <Button variant="hero" size="sm">
-                <Zap className="w-4 h-4" />
-                اطلب الآن
-              </Button>
-            </a>
+            <Button variant="hero" size="sm">
+              <Zap className="w-4 h-4" />
+              اطلب الآن
+            </Button>
           </div>
 
           {/* Mobile toggle */}
@@ -86,12 +81,10 @@ const Navbar = () => {
                   {link.label}
                 </Link>
               ))}
-              <a href={`https://wa.me/${settings.whatsappNumber}`} target="_blank" rel="noopener noreferrer">
-                <Button variant="hero" size="sm" className="mt-2">
-                  <Zap className="w-4 h-4" />
-                  اطلب الآن
-                </Button>
-              </a>
+              <Button variant="hero" size="sm" className="mt-2">
+                <Zap className="w-4 h-4" />
+                اطلب الآن
+              </Button>
             </div>
           </div>
         )}
